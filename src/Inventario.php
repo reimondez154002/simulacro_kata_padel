@@ -1,16 +1,18 @@
 <?php
 
 class Inventario{
-    
+    public $catalogo;
     public function __construct(Catalogo $catalogo){
-        $productos = $catalogo;
+        
+        $this->$catalogo = $catalogo;
     }
 
     public function ejecutar(string $instruccion): string{
+
         return "El inventario ha sido vaciado";
     }
 }
 
 interface Catalogo{
-    public function getPrice(string $articulo): ?float;
+    public function getPrecio(string $articulo): ?float;
 }   
