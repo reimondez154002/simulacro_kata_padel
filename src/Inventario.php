@@ -3,8 +3,8 @@
 class Inventario{
     public $catalogo;
     public function __construct(Catalogo $catalogo){
-        
-        $this->$catalogo = $catalogo;
+
+        $this->catalogo = $catalogo;
     }
 
     public function ejecutar(string $instruccion): string{
