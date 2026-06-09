@@ -9,7 +9,12 @@ class Inventario{
 
     public function ejecutar(string $instruccion): string{
 
-        return "El inventario ha sido vaciado";
+    if($instruccion === "cuenta"){
+        
+        return "Total: 0.00";
+    }
+
+    return "El inventario ha sido vaciado";
     }
 }
 
