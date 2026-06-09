@@ -16,4 +16,15 @@ class InventarioTest extends TestCase{
         //Comprobar
         $this->assertEquals("El inventario ha sido vaciado", $resultado);
     }
+
+    public function test_funcion_cuenta_vacia_devuelve_00():void{
+        //Preparar(MOCK)
+        $catalogoMock = $this->createMock(Catalogo::class);
+        $inventario = new Inventario($catalogoMock);
+        //Ejecutar Accion
+        $resultado = $inventario->ejecutar("cuenta");
+
+        //Comprobar
+        $this->assertEquals("Total: 0.00", $resultado);
+    }
 }
