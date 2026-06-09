@@ -9,9 +9,21 @@ class Inventario{
 
     public function ejecutar(string $instruccion): string{
 
-    if($instruccion === "cuenta"){
+    $partesInstruccion = explode(" ",$instruccion);
+    $accion = strtolower($partesInstruccion[0]);
+    $producto = strtolower($partesInstruccion[1] ?? " ");
+
+    if($accion === "cuenta"){
 
         return "Total: 0.00";
+    }
+    elseif($accion === "añadir"){
+
+        $precio = $this->catalogo->getPrecio($producto);
+
+        if($precio!==null){
+            return "$producto x1";
+        }
     }
 
     return "El inventario ha sido vaciado";
