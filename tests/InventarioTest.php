@@ -27,4 +27,21 @@ class InventarioTest extends TestCase{
         //Comprobar
         $this->assertEquals("Total: 0.00", $resultado);
     }
+
+    public function test_funcion_añadir_un_artiulo_sin_cantidad_a_inventario():void{
+        //Preparar(MOCK)
+        $catalogoMock = $this->createMock(Catalogo::class);
+        $catalogoMock->method("getPrecio")->willReturnCallback(function($articulo){
+            if($articulo === "raqueta"){
+
+                return 50.00;
+            }
+        });
+        $inventario = new Inventario($catalogoMock);
+        //Ejecutar Accion
+        $resultado = $inventario->ejecutar("añadir raqueta");
+
+        //Comprobar
+        $this->assertEquals("raqueta x1", $resultado);
+    }
 }
