@@ -17,7 +17,8 @@ class Inventario{
 
         return "Total: 0.00";
     }
-    elseif($accion === "añadir"){
+    
+    if($accion === "añadir"){
 
         $precio = $this->catalogo->getPrecio($producto);
 
