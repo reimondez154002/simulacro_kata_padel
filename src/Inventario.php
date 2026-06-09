@@ -1,7 +1,7 @@
 <?php
 
 class Inventario{
-    public $catalogo;
+    private Catalogo $catalogo;
     public function __construct(Catalogo $catalogo){
 
         $this->catalogo = $catalogo;
@@ -10,7 +10,7 @@ class Inventario{
     public function ejecutar(string $instruccion): string{
 
     if($instruccion === "cuenta"){
-        
+
         return "Total: 0.00";
     }
 
