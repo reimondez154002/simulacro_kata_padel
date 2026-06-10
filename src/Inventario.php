@@ -23,19 +23,17 @@ class Inventario{
     if($accion === "añadir"){
 
         $precio = $this->catalogo->getPrecio($producto);
-
-        if($precio!==null){
-
-            if(isset($this->articulos[$producto])){
-                $this->articulos[$producto] = $this->articulos[$producto] + $cantidad;
-            }
-            else{
-                $this->articulos[$producto] = $cantidad;
-            }
-        }
-        else{
+        if($precio===null){
             return "El articulo no existe en el catalogo";
         }
+
+        if(isset($this->articulos[$producto])){
+            $this->articulos[$producto] = $this->articulos[$producto] + $cantidad;
+        }
+        else{
+            $this->articulos[$producto] = $cantidad;
+        }
+        
         return $this->listarInventario($this->articulos);
     }
 
