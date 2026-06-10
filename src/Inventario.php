@@ -13,7 +13,7 @@ class Inventario{
     $partesInstruccion = explode(" ",$instruccion);
     $accion = strtolower($partesInstruccion[0]);
     $producto = strtolower($partesInstruccion[1] ?? " ");
-    $cantidad = strtolower($partesInstruccion[2] ?? 1);
+    $cantidad = (int)($partesInstruccion[2] ?? 1);
 
     if($accion === "cuenta"){
 
