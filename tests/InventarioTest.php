@@ -177,4 +177,27 @@ class InventarioTest extends TestCase{
         //Comprobar
         $this->assertEquals("pelotas x1", $resultado);
     }
+
+    public function test_eliminar_elemento_no_existente():void{
+        //Preparar(MOCK)
+        $catalogoMock = $this->createMock(Catalogo::class);
+        $catalogoMock->method("getPrecio")->willReturnCallback(function($articulo){
+            if($articulo === "raqueta"){
+
+                return 50.00;
+            }
+            
+            if($articulo === "pelotas"){
+
+                return 5.00;
+            }
+        });
+        $inventario = new Inventario($catalogoMock);
+        //Ejecutar Accion
+        $inventario->ejecutar("añadir pelotas");
+        $inventario->ejecutar("añadir raqueta");
+        $resultado = $inventario->ejecutar("eliminar agua");
+        //Comprobar
+        $this->assertEquals("El elemento a eliminar no esta en el inventario", $resultado);
+    }
 }

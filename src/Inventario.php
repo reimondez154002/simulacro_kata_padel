@@ -46,8 +46,11 @@ class Inventario{
     if($accion === "eliminar"){
         if(isset($this->articulos[$producto])){
             unset($this->articulos[$producto]);
+
+            return $this->listarInventario($this->articulos);
         }
-        return $this->listarInventario($this->articulos);
+        
+        return "El elemento a eliminar no esta en el inventario";
     }
     return "Accion no reconocida";
     }
