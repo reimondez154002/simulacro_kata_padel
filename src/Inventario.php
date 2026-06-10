@@ -2,6 +2,7 @@
 
 class Inventario{
     private Catalogo $catalogo;
+    private array $articulos = []; 
     public function __construct(Catalogo $catalogo){
 
         $this->catalogo = $catalogo;
@@ -17,14 +18,24 @@ class Inventario{
 
         return "Total: 0.00";
     }
-    
+
     if($accion === "añadir"){
 
         $precio = $this->catalogo->getPrecio($producto);
 
         if($precio!==null){
-            return "$producto x1";
+            $this->articulos[$producto] = 1;
         }
+
+        ksort($this->articulos,SORT_REGULAR);
+
+        $textos = [];
+        foreach($this->articulos as $nombre => $cantidad) {
+            
+            $textos[] = "$nombre x$cantidad";
+        }
+        
+        return implode(', ', $textos);
     }
 
     return "El inventario ha sido vaciado";
