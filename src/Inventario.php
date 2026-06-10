@@ -36,7 +36,8 @@ class Inventario{
         
         return $this->listarInventario($this->articulos);
     }
-    If($accion === "vaciar"){
+    
+    if($accion === "vaciar"){
         $this->articulos = [];
 
         return "El inventario ha sido vaciado";
