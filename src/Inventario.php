@@ -36,8 +36,13 @@ class Inventario{
         
         return $this->listarInventario($this->articulos);
     }
+    If($accion === "vaciar"){
+        $this->articulos = [];
 
-    return "El inventario ha sido vaciado";
+        return "El inventario ha sido vaciado";
+    }
+
+    return "Accion no reconocida";
     }
 
     private function listarInventario(array $inventario):string{
