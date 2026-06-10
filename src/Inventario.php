@@ -13,7 +13,7 @@ class Inventario{
     $partesInstruccion = explode(" ",$instruccion);
     $accion = strtolower($partesInstruccion[0]);
     $producto = strtolower($partesInstruccion[1] ?? " ");
-
+    
     if($accion === "cuenta"){
 
         return "Total: 0.00";
@@ -26,7 +26,7 @@ class Inventario{
         if($precio!==null){
 
             if(isset($this->articulos[$producto])){
-                $this->articulos[$producto] = $this->articulos[$producto]+1;
+                $this->articulos[$producto] = $this->articulos[$producto] + 1;
             }
             else{
                 $this->articulos[$producto] = 1;
