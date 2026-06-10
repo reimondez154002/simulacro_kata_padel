@@ -26,19 +26,24 @@ class Inventario{
         if($precio!==null){
             $this->articulos[$producto] = 1;
         }
+        
+        return $this->listarInventario($this->articulos);
+        }
 
-        ksort($this->articulos,SORT_REGULAR);
+    return "El inventario ha sido vaciado";
+    }
+
+    private function listarInventario(array $inventario):string{
+        ksort($inventario,SORT_REGULAR);
 
         $textos = [];
-        foreach($this->articulos as $nombre => $cantidad) {
-            
+        foreach($inventario as $nombre => $cantidad) {
+
             $textos[] = "$nombre x$cantidad";
         }
         
         return implode(', ', $textos);
-    }
 
-    return "El inventario ha sido vaciado";
     }
 }
 
