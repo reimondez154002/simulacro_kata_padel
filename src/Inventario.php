@@ -24,7 +24,8 @@ class Inventario{
         $precio = $this->catalogo->getPrecio($producto);
 
         if($precio!==null){
-            $this->articulos[$producto] = 1;
+
+                $this->articulos[$producto] = 1;
         }
         
         return $this->listarInventario($this->articulos);
