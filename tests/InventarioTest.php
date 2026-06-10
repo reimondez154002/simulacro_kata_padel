@@ -69,7 +69,7 @@ class InventarioTest extends TestCase{
         $this->assertEquals("pelotas x1, raqueta x1", $resultado);
     }
 
-        public function test_añadir_articulo_con_cantidad():void{
+        public function test_añadir_articulo_que_ya_existe():void{
                 //Preparar(MOCK)
         $catalogoMock = $this->createMock(Catalogo::class);
         $catalogoMock->method("getPrecio")->willReturnCallback(function($articulo){
@@ -91,5 +91,5 @@ class InventarioTest extends TestCase{
         //Comprobar
         $this->assertEquals("raqueta x2", $resultado);
     }
-    
+
 }
