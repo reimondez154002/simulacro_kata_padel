@@ -17,7 +17,7 @@ class Inventario{
 
     if($accion === "cuenta"){
 
-        return "Total: 0.00";
+        return $this->calcularTotal();
     }
 
     if($accion === "añadir"){
@@ -45,20 +45,17 @@ class Inventario{
 
     if($accion === "eliminar"){
 
-        if(isset($this->articulos[$producto])){
-            unset($this->articulos[$producto]);
-
-            if($this->articulos === []){
-            
-                return "La lista ha sido vaciada";
-            }
-
-            return $this->listarInventario($this->articulos);
+        if(!isset($this->articulos[$producto])){
+            return "El elemento a eliminar no esta en el inventario";
         }
+        unset($this->articulos[$producto]);
+
+        if($this->articulos === []){
         
+            return "La lista ha sido vaciada";
+        }
 
-
-        return "El elemento a eliminar no esta en el inventario";
+        return $this->listarInventario($this->articulos);
     }
 
     return "Accion no reconocida";
@@ -75,6 +72,17 @@ class Inventario{
         
         return implode(', ', $textos);
 
+    }
+    private function calcularTotal(): string {
+        $total = 0.0;
+        foreach ($this->articulos as $producto => $cantidad) {
+            $precio = $this->catalogo->getPrecio($producto);
+            if ($precio !== null) {
+                $total += $precio * $cantidad;
+            }
+        }
+        // number_format garantiza que siempre devuelva dos decimales (ej: 0.00, 100.00)
+        return "Total: " . number_format($total, 2, '.', '');
     }
 }
 

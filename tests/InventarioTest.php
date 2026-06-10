@@ -115,4 +115,14 @@ class InventarioTest extends TestCase{
         //Comprobar
         $this->assertEquals("La lista ha sido vaciada", $resultado);
     }
+
+    public function test_funcion_cuenta_devuelve():void{
+        //Ejecutar Accion
+        $this->inventario->ejecutar("añadir pelotas");
+        $this->inventario->ejecutar("añadir raqueta");
+        $resultado = $this->inventario->ejecutar("cuenta");
+
+        //Comprobar
+        $this->assertEquals("Total: 55.00", $resultado);
+    }
 }
