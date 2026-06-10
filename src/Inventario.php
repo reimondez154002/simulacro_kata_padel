@@ -33,7 +33,9 @@ class Inventario{
                 $this->articulos[$producto] = $cantidad;
             }
         }
-        
+        else{
+            return "El articulo no existe en el catalogo";
+        }
         return $this->listarInventario($this->articulos);
     }
 

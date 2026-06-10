@@ -130,7 +130,7 @@ class InventarioTest extends TestCase{
         //Ejecutar Accion
         $resultado = $inventario->ejecutar("añadir patatas");
         //Comprobar
-        $this->assertEquals("La lista ha sido vaciada", $resultado);
+        $this->assertEquals("El articulo no existe en el catalogo", $resultado);
     }
     
 }
