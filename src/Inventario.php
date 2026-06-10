@@ -25,7 +25,12 @@ class Inventario{
 
         if($precio!==null){
 
+            if(isset($this->articulos[$producto])){
+                $this->articulos[$producto] = $this->articulos[$producto]+1;
+            }
+            else{
                 $this->articulos[$producto] = 1;
+            }
         }
         
         return $this->listarInventario($this->articulos);
