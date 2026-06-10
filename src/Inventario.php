@@ -36,13 +36,19 @@ class Inventario{
         
         return $this->listarInventario($this->articulos);
     }
-    
+
     if($accion === "vaciar"){
         $this->articulos = [];
 
         return "El inventario ha sido vaciado";
     }
 
+    if($accion === "eliminar"){
+        if(isset($this->articulos[$producto])){
+            unset($this->articulos[$producto]);
+        }
+        return $this->listarInventario($this->articulos);
+    }
     return "Accion no reconocida";
     }
 
